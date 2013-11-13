@@ -22,13 +22,13 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.arenaapi.data.enums;
 
 /**
  *
  * @author Goblom
  */
-public enum PlayerEvents {
-    ADDED,
-    REMOVED
+public enum LocationType {
+    END,
+    OTHER
 }

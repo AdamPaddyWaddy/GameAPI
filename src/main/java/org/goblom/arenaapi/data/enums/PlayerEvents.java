@@ -22,15 +22,13 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.arenaapi.data.enums;
 
 /**
  *
  * @author Goblom
  */
-public enum ArenaPhase {
-    CREATE,
-    LOAD,
-    GAME_START,
-    GAME_END
+public enum PlayerEvents {
+    ADDED,
+    REMOVED
 }

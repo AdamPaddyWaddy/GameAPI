@@ -23,6 +23,8 @@
  */
 package org.goblom.arenaapi;
 
+import org.goblom.arenaapi.data.Team;
+import org.goblom.arenaapi.data.Arena;
 import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.Location;

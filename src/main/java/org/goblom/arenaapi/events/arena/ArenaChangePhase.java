@@ -23,8 +23,8 @@
  */
 package org.goblom.arenaapi.events.arena;
 
-import org.goblom.arenaapi.Arena;
-import org.goblom.arenaapi.data.ArenaPhase;
+import org.goblom.arenaapi.data.Arena;
+import org.goblom.arenaapi.data.enums.ArenaPhase;
 
 /**
  *

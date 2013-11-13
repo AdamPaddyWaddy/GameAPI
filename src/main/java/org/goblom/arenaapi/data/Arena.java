@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.goblom.arenaapi;
+package org.goblom.arenaapi.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,8 +37,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitTask;
-import org.goblom.arenaapi.data.ArenaPhase;
-import org.goblom.arenaapi.data.LocationType;
+import org.goblom.arenaapi.ArenaAPI;
+import org.goblom.arenaapi.ArenaHandler;
+import org.goblom.arenaapi.data.enums.ArenaPhase;
+import org.goblom.arenaapi.data.enums.LocationType;
 import org.goblom.arenaapi.events.arena.ArenaChangePhase;
 
 /**

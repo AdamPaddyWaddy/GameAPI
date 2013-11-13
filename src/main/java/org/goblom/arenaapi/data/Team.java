@@ -21,8 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.goblom.arenaapi;
+package org.goblom.arenaapi.data;
 
+import org.goblom.arenaapi.data.Arena;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

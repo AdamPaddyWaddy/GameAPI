@@ -24,6 +24,7 @@
 
 package org.goblom.arenaapi;
 
+import org.goblom.arenaapi.data.Arena;
 import org.goblom.arenaapi.data.ArenaHandlerInterface;
 
 /**
