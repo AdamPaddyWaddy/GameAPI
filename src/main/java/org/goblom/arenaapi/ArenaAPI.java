@@ -61,50 +61,52 @@ public class ArenaAPI extends JavaPlugin implements ArenaAPIInterface {
         return plugin;
     }
 
+    @Override
     public Map<Arena, BukkitTask> getArenaTimers() {
         return arenaTimers;
     }
 
+    @Override
     public Map<String, Arena> getArenas() {
         return arenas;
     }
     
+    @Override
     public Map<String, Team> getTeams() {
         return teams;
     }
     
+    @Override
     public Arena getArena(String arenaName) {
         return arenas.get(arenaName);
     }
 
+    @Override
     public Team getTeam(String teamName) {
         return teams.get(teamName);
     }
-    
-    public Arena getArena(Arena arena) {
-        return arenas.get(arena.getName());
-    }
 
-    public Team getTeam(Team team) {
-        return teams.get(team.getName());
-    }
-
+    @Override
     public Arena createArena(String arenaName, int maxPlayers) {
         return arenas.put(arenaName, new Arena(arenaName, maxPlayers));
     }
 
+    @Override
     public Arena createArena(String arenaName, int minPlayers, int maxPlayers) {
         return arenas.put(arenaName, new Arena(arenaName, minPlayers, maxPlayers));
     }
 
+    @Override
     public Arena createArena(String arenaName, ArenaHandler handler) {
         return arenas.put(arenaName, new Arena(arenaName, handler));
     }
 
+    @Override
     public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler) {
         return arenas.put(arenaName, new Arena(arenaName, minPlayers, maxPlayers, handler));
     }
 
+    @Override
     public Team createTeam(String teamName, TeamHandler handler) {
         return teams.put(teamName, new Team(teamName, handler));
     }

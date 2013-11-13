@@ -46,7 +46,7 @@ public class Team {
     private List<String> players = new ArrayList<String>();
     private ItemStack[] teamArmor;
     
-    private Map<Arena, Location> arenaSpawn = new HashMap();
+    private Map<String, Location> arenaSpawn = new HashMap();
     
     public Team(String teamName, TeamHandler handler) {
         this.teamName = teamName;
@@ -91,12 +91,12 @@ public class Team {
         return players;
     }
 
-    public Map<Arena, Location> getArenaSpawnsForTeam() {
+    public Map<String, Location> getArenaSpawnsForTeam() {
         return arenaSpawn;
     }
 
-    public Location getSpawnForArena(Arena arena) {
-        return arenaSpawn.get(arena);
+    public Location getSpawnForArena(String arenaName) {
+        return arenaSpawn.get(arenaName);
     }
     
     public void setTeamArmor(ItemStack[] armor) {
@@ -107,17 +107,17 @@ public class Team {
         this.friendlyFire = friendlyFire;
     }
 
-    public boolean setSpawnForArena(Arena arena, Location loc) {
-        if (!arenaSpawn.containsKey(arena)) {
-            arenaSpawn.put(arena, loc);
+    public boolean setSpawnForArena(String arenaName, Location loc) {
+        if (!arenaSpawn.containsKey(arenaName)) {
+            arenaSpawn.put(arenaName, loc);
             return true;
         }
         return false;
     }
 
-    public boolean remSpawnForArena(Arena arena) {
-        if (arenaSpawn.containsKey(arena)) {
-            arenaSpawn.remove(arena);
+    public boolean remSpawnForArena(String arenaName) {
+        if (arenaSpawn.containsKey(arenaName)) {
+            arenaSpawn.remove(arenaName);
             return true;
         }
         return false;

@@ -22,29 +22,42 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.exampleplugin;
 
-import java.util.Map;
-import org.bukkit.scheduler.BukkitTask;
-import org.goblom.arenaapi.ArenaHandler;
-import org.goblom.arenaapi.TeamHandler;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.goblom.arenaapi.ArenaAPI;
+import org.goblom.arenaapi.data.ArenaAPIInterface;
 
 /**
  *
  * @author Goblom
  */
-public interface ArenaAPIInterface {
-    public Map<Arena, BukkitTask> getArenaTimers();
+public class ExamplePlugin {
     
-    public Map<String, Arena> getArenas();
-    public Arena getArena(String arenaName);
-    public Arena createArena(String arenaName, int maxPlayers);
-    public Arena createArena(String arenaName, ArenaHandler handler);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
+    private ArenaAPIInterface arenaAPI;
     
+    public void onEnable() {
+        arenaAPI = (ArenaAPIInterface) Bukkit.getServer().getPluginManager().getPlugin("Arena API");
+        initTeam();
+        initArena();
+        initTeamSpawn();
+    }
     
-    public Map<String, Team> getTeams();
-    public Team getTeam(String teamName);
-    public Team createTeam(String teamName, TeamHandler handler);
+    public ArenaAPIInterface getArenaAPI() {
+        return arenaAPI;
+    }
+    
+    public void initTeam() {
+        getArenaAPI().createTeam("Example Team", new ExampleTeamHandler());
+        getArenaAPI().getTeam("Example Team").addPlayer("Goblom");
+    }
+    public void initArena() {
+        getArenaAPI().createArena("Example Arena", new ExampleArenaHandler());
+        getArenaAPI().getArena("Example Arena").setMinPlayers(1);
+        getArenaAPI().getArena("Example Arena").setMaxPlayers(10);
+    }
+    public void initTeamSpawn() {
+        getArenaAPI().getTeam("Example Team").setSpawnForArena("Example Arena", new Location(Bukkit.getWorld("world"), 0,0,0));
+    }
 }

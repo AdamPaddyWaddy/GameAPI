@@ -22,29 +22,28 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.exampleplugin;
 
-import java.util.Map;
-import org.bukkit.scheduler.BukkitTask;
-import org.goblom.arenaapi.ArenaHandler;
 import org.goblom.arenaapi.TeamHandler;
+import org.goblom.arenaapi.data.Team;
+import org.goblom.arenaapi.events.team.PlayerAddedToTeam;
+import org.goblom.arenaapi.events.team.PlayerRemovedFromTeam;
+import org.goblom.arenaapi.events.team.TeamCreated;
+import org.goblom.arenaapi.events.team.TeamRemoved;
 
 /**
  *
  * @author Goblom
  */
-public interface ArenaAPIInterface {
-    public Map<Arena, BukkitTask> getArenaTimers();
-    
-    public Map<String, Arena> getArenas();
-    public Arena getArena(String arenaName);
-    public Arena createArena(String arenaName, int maxPlayers);
-    public Arena createArena(String arenaName, ArenaHandler handler);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
-    
-    
-    public Map<String, Team> getTeams();
-    public Team getTeam(String teamName);
-    public Team createTeam(String teamName, TeamHandler handler);
+public class ExampleTeamHandler extends TeamHandler {
+    public void onPlayerAddedToTeam(PlayerAddedToTeam event) { }
+    public void onPlayerRemovedFromTeam(PlayerRemovedFromTeam event) {  }
+    public void onTeamCreate(TeamCreated event) { }
+    public void onTeamRemove(TeamRemoved event) { }    
+
+    @Override
+    public void create(Team team) { }
+
+    @Override
+    public void delete(Team team) { }
 }
