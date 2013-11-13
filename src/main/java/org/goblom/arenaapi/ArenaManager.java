@@ -503,32 +503,6 @@ public class ArenaManager {
         }
     }
     
-    public static class ArenaData {
-
-        public static enum LocationType {
-
-            END,
-            OTHER
-        }
-
-        public static enum ArenaPhase {
-
-            CREATE,
-            LOAD,
-            GAME_START,
-            GAME_END
-        }
-        
-        public interface ArenaHandlerInterface {
-            
-            void onArenaPhaseChange(ArenaChangePhaseEvent event);
-            
-            void onLoad();
-            void start();
-            void end();
-        }
-    }
-    
     public abstract class ArenaHandler implements ArenaHandlerInterface {
         private Arena arena;
         
