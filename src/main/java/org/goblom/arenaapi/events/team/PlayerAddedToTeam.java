@@ -24,10 +24,28 @@
 
 package org.goblom.arenaapi.events.team;
 
+import org.bukkit.entity.Player;
+import org.goblom.arenaapi.data.Team;
+
 /**
  *
  * @author Goblom
  */
 public class PlayerAddedToTeam {
+
+    private static Team team;
+    private static Player player;
     
+    public PlayerAddedToTeam(Team team, Player player) {
+        this.team = team;
+        this.player = player;
+    }
+    
+    public Team getTeam() {
+        return team;
+    }
+    
+    public Player getPlayer() {
+        return player;
+    }
 }

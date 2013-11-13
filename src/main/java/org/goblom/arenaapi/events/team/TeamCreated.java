@@ -24,10 +24,20 @@
 
 package org.goblom.arenaapi.events.team;
 
+import org.goblom.arenaapi.data.Team;
+
 /**
  *
  * @author Goblom
  */
 public class TeamCreated {
+    private static Team team;
     
+    public TeamCreated(Team team) {
+        this.team = team;
+    }
+    
+    public Team getTeam() {
+        return team;
+    }
 }

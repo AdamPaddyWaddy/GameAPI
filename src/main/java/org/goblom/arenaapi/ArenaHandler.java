@@ -24,6 +24,7 @@
 
 package org.goblom.arenaapi;
 
+import org.bukkit.event.Listener;
 import org.goblom.arenaapi.data.Arena;
 import org.goblom.arenaapi.data.ArenaHandlerInterface;
 
@@ -31,11 +32,12 @@ import org.goblom.arenaapi.data.ArenaHandlerInterface;
  *
  * @author Goblom
  */
-public abstract class ArenaHandler implements ArenaHandlerInterface {
+public abstract class ArenaHandler implements ArenaHandlerInterface, Listener {
     private Arena arena;
     
     public ArenaHandler(Arena arena) {
         this.arena = arena;
+        ArenaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, ArenaAPI.getPlugin());
     }
     
     public abstract void onLoad();

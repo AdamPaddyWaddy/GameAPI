@@ -32,9 +32,9 @@ import org.goblom.arenaapi.data.enums.ArenaPhase;
  */
 public class ArenaChangePhase {
 
-    private final Arena arena;
-    private final ArenaPhase currentPhase;
-    private final ArenaPhase previousPhase;
+    private static Arena arena;
+    private static ArenaPhase currentPhase;
+    private static ArenaPhase previousPhase;
 
     public ArenaChangePhase(Arena arena, ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
         this.arena = arena;

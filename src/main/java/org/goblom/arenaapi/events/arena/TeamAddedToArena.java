@@ -24,10 +24,27 @@
 
 package org.goblom.arenaapi.events.arena;
 
+import org.goblom.arenaapi.data.Arena;
+import org.goblom.arenaapi.data.Team;
+
 /**
  *
  * @author Goblom
  */
 public class TeamAddedToArena {
+    private static Arena arena;
+    private static Team team;
     
+    public TeamAddedToArena(Arena arena, Team team) {
+        this.arena = arena;
+        this.team = team;
+    }
+    
+    public Arena getArena() {
+        return arena;
+    }
+    
+    public Team getTeam() {
+        return team;
+    }
 }

@@ -23,7 +23,6 @@
  */
 package org.goblom.arenaapi.data;
 
-import org.goblom.arenaapi.data.Arena;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +43,10 @@ public class Team {
     private List<Arena> arenasForTeam = new ArrayList<Arena>();
     private Map<Arena, Location> arenaSpawn = new HashMap();
 
+    public Team(String teamName) {
+        this(teamName, null, null);
+    }
+    
     public Team(String teamName, Arena arena, Location arenaSpawn) {
         this.arenasForTeam.add(arena);
         this.teamName = teamName;

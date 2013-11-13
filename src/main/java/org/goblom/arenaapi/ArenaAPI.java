@@ -28,7 +28,6 @@ import org.goblom.arenaapi.data.Arena;
 import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.Location;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -60,15 +59,27 @@ public class ArenaAPI extends JavaPlugin {
     public static Map<String, Arena> getArenas() {
         return arenas;
     }
-
+    
+    public static Map<String, Team> getTeams() {
+        return teams;
+    }
+    
     public static Arena getArena(String arenaName) {
         return arenas.get(arenaName);
     }
 
+    public static Team getTeam(String teamName) {
+        return teams.get(teamName);
+    }
+    
     public static Arena getArena(Arena arena) {
         return arenas.get(arena.getName());
     }
 
+    public static Team getTeam(Team team) {
+        return teams.get(team.getName());
+    }
+    
     public static Arena createArena(String arenaName) {
         return arenas.put(arenaName, new Arena(arenaName));
     }
@@ -89,10 +100,10 @@ public class ArenaAPI extends JavaPlugin {
         return arenas.put(arenaName, new Arena(arenaName, minPlayers, maxPlayers, handler));
     }
 
-    public static Map<String, Team> getTeams() {
-        return teams;
+    public static Team createTeam(String teamName) {
+        return teams.put(teamName, new Team(teamName));
     }
-
+    
     public static Team createTeam(String teamName, Arena arena, Location spawnLocation) {
         return teams.put(teamName, new Team(teamName, arena, spawnLocation));
     }

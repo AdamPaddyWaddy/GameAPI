@@ -24,10 +24,20 @@
 
 package org.goblom.arenaapi.events.arena;
 
+import org.goblom.arenaapi.data.Arena;
+
 /**
  *
  * @author Goblom
  */
 public class ArenaDelete {
+    private static Arena arena;
     
+    public ArenaDelete(Arena arena) {
+        this.arena = arena;
+    }
+    
+    public Arena getArena() {
+        return arena;
+    }
 }
