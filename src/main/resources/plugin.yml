@@ -1,0 +1,4 @@
+main: org.goblom.arenaapi.ArenaAPI
+name: Arena API
+version: 1.0
+author: [Goblom]
