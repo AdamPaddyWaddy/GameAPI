@@ -24,31 +24,20 @@
 
 package org.goblom.arenaapi;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
+import org.goblom.arenaapi.data.ArenaHandlerInterface;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaAPI extends JavaPlugin { 
-
-    private static ArenaAPI plugin;
+public abstract class ArenaHandler implements ArenaHandlerInterface {
+    private Arena arena;
     
-    private Map<Arena, BukkitTask> arenaTimers = new HashMap();
-    
-    public void onEnable() {
-        this.plugin = this;
+    public ArenaHandler(Arena arena) {
+        this.arena = arena;
     }
     
-    public static ArenaAPI getPlugin() {
-        return plugin;
-    }
-    
-    public Map<Arena, BukkitTask> getArenaTimers() {
-        return arenaTimers;
-    }
+    public abstract void onLoad();
+    public abstract void start();
+    public abstract void end();
 }
