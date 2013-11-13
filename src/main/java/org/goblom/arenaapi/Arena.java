@@ -39,6 +39,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitTask;
 import org.goblom.arenaapi.data.ArenaPhase;
 import org.goblom.arenaapi.data.LocationType;
+import org.goblom.arenaapi.events.arena.ArenaChangePhase;
 
 /**
  *
@@ -52,7 +53,7 @@ public class Arena implements Listener {
 
     private ArenaHandler handler;
     private List<String> players = new ArrayList<String>();
-    private List<ArenaManager.Team> teams = new ArrayList<ArenaManager.Team>();
+    private List<Team> teams = new ArrayList<Team>();
 
     private Map<String, PlayerInventory> playerInv = new HashMap();
 
@@ -206,18 +207,18 @@ public class Arena implements Listener {
         this.minPlayers = minPlayers;
     }
 
-    public List<ArenaManager.Team> getTeams() {
+    public List<Team> getTeams() {
         return teams;
     }
 
-    public Arena addTeam(ArenaManager.Team team) {
+    public Arena addTeam(Team team) {
         if (!teams.contains(team)) {
             teams.add(team);
         }
         return this;
     }
 
-    public Arena remTeam(ArenaManager.Team team) {
+    public Arena remTeam(Team team) {
         if (teams.contains(team)) {
             teams.remove(team);
         }
@@ -271,8 +272,8 @@ public class Arena implements Listener {
 
     protected final void craftEvent(ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
         this.currentPhase = changedToPhase;
-        ArenaManager.ArenaChangePhaseEvent acpe = new ArenaManager.ArenaChangePhaseEvent(this, changedToPhase, changedFromPhase);
-        handler.onArenaPhaseChange(acpe);
+        ArenaChangePhase acp = new ArenaChangePhase(this, changedToPhase, changedFromPhase);
+        handler.onArenaPhaseChange(acp);
     }
 
     @EventHandler
@@ -285,7 +286,7 @@ public class Arena implements Listener {
                 Player damager = (Player) r;
                 Player damaged = (Player) d;
 
-                for (ArenaManager.Team team : teams) {
+                for (Team team : teams) {
                     if ((team.hasPlayer(damager.getName())) && team.hasPlayer(damaged.getName())) {
                         event.setCancelled(true);
                     }
@@ -297,7 +298,7 @@ public class Arena implements Listener {
     private final void preventItemLoss() {
         Bukkit.getScheduler().runTaskTimer(ArenaAPI.getPlugin(), new Runnable() {
             public void run() {
-                for (ArenaManager.Team team : teams) {
+                for (Team team : teams) {
                     for (String playerName : team.getPlayers()) {
                         Player player = Bukkit.getPlayer(playerName);
                         if (player != null) {
