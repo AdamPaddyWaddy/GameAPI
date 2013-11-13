@@ -213,28 +213,4 @@ public class ArenaManager {
             return false;
         }
     }
-
-    public static class ArenaChangePhaseEvent {
-        private final Arena arena;
-        private final ArenaPhase currentPhase;
-        private final ArenaPhase previousPhase;
-        
-        public ArenaChangePhaseEvent(Arena arena, ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
-            this.arena = arena;
-            this.currentPhase = changedToPhase;
-            this.previousPhase = changedFromPhase;
-        }
-        
-        public Arena getArena() {
-            return arena;
-        }
-        
-        public ArenaPhase getCurrentPhase() {
-            return currentPhase;
-        }
-        
-        public ArenaPhase getPreviousPhase() {
-            return previousPhase;
-        }
-    }
 }

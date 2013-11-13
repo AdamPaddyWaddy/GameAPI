@@ -21,13 +21,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package org.goblom.arenaapi.events.arena;
+
+import org.goblom.arenaapi.Arena;
+import org.goblom.arenaapi.data.ArenaPhase;
 
 /**
  *
  * @author Goblom
  */
 public class ArenaChangePhase {
-    
+
+    private final Arena arena;
+    private final ArenaPhase currentPhase;
+    private final ArenaPhase previousPhase;
+
+    public ArenaChangePhase(Arena arena, ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
+        this.arena = arena;
+        this.currentPhase = changedToPhase;
+        this.previousPhase = changedFromPhase;
+    }
+
+    public Arena getArena() {
+        return arena;
+    }
+
+    public ArenaPhase getCurrentPhase() {
+        return currentPhase;
+    }
+
+    public ArenaPhase getPreviousPhase() {
+        return previousPhase;
+    }
 }
