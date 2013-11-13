@@ -34,7 +34,7 @@ import org.goblom.arenaapi.data.TeamHandlerInterface;
  */
 public abstract class TeamHandler implements TeamHandlerInterface, Listener {
 
-    private Team team;
+    public Team team;
     
     public TeamHandler(Team team) {
         this.team = team;
