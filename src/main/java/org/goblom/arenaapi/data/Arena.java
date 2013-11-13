@@ -113,25 +113,25 @@ public class Arena implements Listener {
     public void create() {
         EventCrafter.craftArenaCreateEvent(this);
         this.currentPhase = ArenaPhase.CREATE;
-        handler.onCreate();
+        handler.onCreate(this);
     }
     
     public void load() {
        EventCrafter.craftArenaChangePhaseEvent(this, ArenaPhase.LOAD, currentPhase);
        this.currentPhase = ArenaPhase.LOAD;
-       handler.onLoad();
+       handler.onLoad(this);
     }
     
     public void start() {
         EventCrafter.craftArenaChangePhaseEvent(this, ArenaPhase.GAME_START, currentPhase);
         this.currentPhase = ArenaPhase.GAME_START;
-        handler.start();
+        handler.start(this);
     }
 
     public void end() {
         EventCrafter.craftArenaChangePhaseEvent(this, ArenaPhase.GAME_END, currentPhase);
         this.currentPhase = ArenaPhase.GAME_START;
-        handler.end();
+        handler.end(this);
     }
 
     public String getName() {
@@ -263,7 +263,7 @@ public class Arena implements Listener {
         } else if (timerTask == null) {
             BukkitTask task = Bukkit.getScheduler().runTaskLater(ArenaAPI.getPlugin(), new Runnable() {
                 public void run() {
-                    handler.end();
+                    handler.end(getThis());
                 }
             }, timer);
 
@@ -283,6 +283,10 @@ public class Arena implements Listener {
         return false;
     }
 
+    private Arena getThis() {
+        return this;
+    }
+    
     @EventHandler
     void onFriendlyFire(EntityDamageByEntityEvent event) {
         if (currentPhase.equals(ArenaPhase.GAME_START)) {

@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.goblom.arenaapi.data.ArenaAPIInterface;
 
 /**
  * Arena Manager
@@ -43,7 +44,7 @@ import org.bukkit.scheduler.BukkitTask;
  * @version 1.0
  * @author Goblom
  */
-public class ArenaAPI extends JavaPlugin {
+public class ArenaAPI extends JavaPlugin implements ArenaAPIInterface {
 
     private static ArenaAPI plugin;
 
@@ -60,51 +61,51 @@ public class ArenaAPI extends JavaPlugin {
         return plugin;
     }
 
-    public static Map<Arena, BukkitTask> getArenaTimers() {
+    public Map<Arena, BukkitTask> getArenaTimers() {
         return arenaTimers;
     }
 
-    public static Map<String, Arena> getArenas() {
+    public Map<String, Arena> getArenas() {
         return arenas;
     }
     
-    public static Map<String, Team> getTeams() {
+    public Map<String, Team> getTeams() {
         return teams;
     }
     
-    public static Arena getArena(String arenaName) {
+    public Arena getArena(String arenaName) {
         return arenas.get(arenaName);
     }
 
-    public static Team getTeam(String teamName) {
+    public Team getTeam(String teamName) {
         return teams.get(teamName);
     }
     
-    public static Arena getArena(Arena arena) {
+    public Arena getArena(Arena arena) {
         return arenas.get(arena.getName());
     }
 
-    public static Team getTeam(Team team) {
+    public Team getTeam(Team team) {
         return teams.get(team.getName());
     }
 
-    public static Arena createArena(String arenaName, int maxPlayers) {
+    public Arena createArena(String arenaName, int maxPlayers) {
         return arenas.put(arenaName, new Arena(arenaName, maxPlayers));
     }
 
-    public static Arena createArena(String arenaName, int minPlayers, int maxPlayers) {
+    public Arena createArena(String arenaName, int minPlayers, int maxPlayers) {
         return arenas.put(arenaName, new Arena(arenaName, minPlayers, maxPlayers));
     }
 
-    public static Arena createArena(String arenaName, ArenaHandler handler) {
+    public Arena createArena(String arenaName, ArenaHandler handler) {
         return arenas.put(arenaName, new Arena(arenaName, handler));
     }
 
-    public static Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler) {
+    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler) {
         return arenas.put(arenaName, new Arena(arenaName, minPlayers, maxPlayers, handler));
     }
 
-    public static Team createTeam(String teamName, TeamHandler handler) {
+    public Team createTeam(String teamName, TeamHandler handler) {
         return teams.put(teamName, new Team(teamName, handler));
     }
 }

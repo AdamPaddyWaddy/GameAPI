@@ -37,8 +37,8 @@ public interface ArenaHandlerInterface {
     void onTeamAddedToArena(TeamAddedToArena event);
     void onTeamRemovedFromArena(TeamRemovedFromArena event);
     
-    void onCreate();
-    void onLoad();
-    void start();
-    void end();
+    void onCreate(Arena arena);
+    void onLoad(Arena arena);
+    void start(Arena arena);
+    void end(Arena arena);
 }

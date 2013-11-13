@@ -24,19 +24,10 @@
 
 package org.goblom.arenaapi.data;
 
-import org.goblom.arenaapi.events.team.*;
-
 /**
  *
  * @author Goblom
  */
-public interface TeamHandlerInterface {
+public interface ArenaAPIInterface {
     
-    void onPlayerAddedToTeam(PlayerAddedToTeam event);
-    void onPlayerRemovedFromTeam(PlayerRemovedFromTeam event);
-    void onTeamCreate(TeamCreated event);
-    void onTeamRemove(TeamRemoved event);
-    
-    void create(Team team);
-    void delete(Team team);
 }

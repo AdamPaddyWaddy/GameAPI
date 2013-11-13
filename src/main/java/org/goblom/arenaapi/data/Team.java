@@ -57,7 +57,7 @@ public class Team {
 
     public void remove() {
         EventCrafter.craftTeamRemovedEvent(this);
-        handler.delete();
+        handler.delete(this);
         
         this.handler = null;
         this.arenaSpawn = null;
@@ -68,7 +68,7 @@ public class Team {
 
     public void create() {
         EventCrafter.craftTeamCreatedEvent(this);
-        handler.create();
+        handler.create(this);
     }
     
     public String getName() {
@@ -150,5 +150,9 @@ public class Team {
             return true;
         }
         return false;
+    }
+    
+    private Team getThis() {
+        return this;
     }
 }
