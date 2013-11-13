@@ -39,6 +39,7 @@ import org.bukkit.scheduler.BukkitTask;
  * custom equipment for teams.
  * 
  * @TODO - JavaDocs
+ * @TODO - Implement Events
  * 
  * @version 1.0
  * @author Goblom
