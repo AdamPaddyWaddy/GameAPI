@@ -25,7 +25,6 @@
 package org.goblom.arenaapi;
 
 import org.bukkit.event.Listener;
-import org.goblom.arenaapi.data.Team;
 import org.goblom.arenaapi.data.TeamHandlerInterface;
 
 /**
@@ -33,12 +32,6 @@ import org.goblom.arenaapi.data.TeamHandlerInterface;
  * @author Goblom
  */
 public abstract class TeamHandler implements TeamHandlerInterface, Listener {
-
-    public Team team;
-    
-    public TeamHandler(Team team) {
-        this.team = team;
-    }
     
     public abstract void create();
     public abstract void delete();
