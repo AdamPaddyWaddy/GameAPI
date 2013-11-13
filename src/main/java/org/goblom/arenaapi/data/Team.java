@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.bukkit.Location;
+import org.goblom.arenaapi.TeamHandler;
 
 /**
  *
@@ -38,22 +39,26 @@ public class Team {
     private String teamName;
     private boolean friendlyFire = false;
 
+    private TeamHandler handler;
+    
     private List<String> players = new ArrayList<String>();
 
     private List<Arena> arenasForTeam = new ArrayList<Arena>();
     private Map<Arena, Location> arenaSpawn = new HashMap();
-
-    public Team(String teamName) {
-        this(teamName, null, null);
+    
+    public Team(String teamName, TeamHandler handler) {
+        this(teamName, handler, null, null);
     }
     
-    public Team(String teamName, Arena arena, Location arenaSpawn) {
+    public Team(String teamName, TeamHandler handler, Arena arena, Location arenaSpawn) {
         this.arenasForTeam.add(arena);
         this.teamName = teamName;
+        this.handler = handler;
         this.arenaSpawn.put(arena, arenaSpawn);
     }
 
     public void remove() {
+        this.handler = null;
         this.arenaSpawn = null;
         this.teamName = null;
         this.arenasForTeam = null;
@@ -63,6 +68,11 @@ public class Team {
     public String getName() {
         return teamName;
     }
+    
+    public TeamHandler getHandler() {
+        return handler;
+    }
+    
 
     public boolean getFriendlyFire() {
         return friendlyFire;

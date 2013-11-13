@@ -22,22 +22,24 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.arenaapi;
 
-import org.goblom.arenaapi.events.arena.*;
+import org.bukkit.event.Listener;
+import org.goblom.arenaapi.data.Team;
+import org.goblom.arenaapi.data.TeamHandlerInterface;
 
 /**
  *
  * @author Goblom
  */
-public interface ArenaHandlerInterface {
-    void onArenaPhaseChange(ArenaChangePhase event);
-    void onArenaDelete(ArenaDelete event);
-    void onArenaCreate(ArenaCreate event);
-    void onTeamAddedToArena(TeamAddedToArena event);
-    void onTeamRemovedFromArena(TeamRemovedFromArena event);
+public abstract class TeamHandler implements TeamHandlerInterface, Listener {
+
+    private Team team;
     
-    void onLoad();
-    void start();
-    void end();
+    public TeamHandler(Team team) {
+        this.team = team;
+    }
+    
+    public abstract void create();
+    public abstract void delete();
 }

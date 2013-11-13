@@ -41,10 +41,12 @@ import org.goblom.arenaapi.ArenaAPI;
 import org.goblom.arenaapi.ArenaHandler;
 import org.goblom.arenaapi.data.enums.ArenaPhase;
 import org.goblom.arenaapi.data.enums.LocationType;
-import org.goblom.arenaapi.events.arena.ArenaChangePhase;
 
 /**
- *
+ * 
+ * @TODO - Implement Min/Max Players
+ * @TODO - Location Types
+ * 
  * @author Goblom
  */
 public class Arena implements Listener {
@@ -83,7 +85,6 @@ public class Arena implements Listener {
     }
 
     public Arena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler) {
-        craftEvent(ArenaPhase.CREATE, null);
         preventItemLoss();
 
         this.arenaName = arenaName;
@@ -111,17 +112,14 @@ public class Arena implements Listener {
     }
 
     protected final void load() {
-        craftEvent(ArenaPhase.LOAD, null);
         handler.onLoad();
     }
 
     public void start() {
-        craftEvent(ArenaPhase.GAME_START, currentPhase);
         handler.start();
     }
 
     public void end() {
-        craftEvent(ArenaPhase.GAME_END, currentPhase);
         handler.end();
     }
 
@@ -270,12 +268,6 @@ public class Arena implements Listener {
             return true;
         }
         return false;
-    }
-
-    protected final void craftEvent(ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
-        this.currentPhase = changedToPhase;
-        ArenaChangePhase acp = new ArenaChangePhase(this, changedToPhase, changedFromPhase);
-        handler.onArenaPhaseChange(acp);
     }
 
     @EventHandler

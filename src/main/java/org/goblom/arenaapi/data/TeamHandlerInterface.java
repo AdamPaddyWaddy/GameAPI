@@ -24,20 +24,19 @@
 
 package org.goblom.arenaapi.data;
 
-import org.goblom.arenaapi.events.arena.*;
+import org.goblom.arenaapi.events.team.*;
 
 /**
  *
  * @author Goblom
  */
-public interface ArenaHandlerInterface {
-    void onArenaPhaseChange(ArenaChangePhase event);
-    void onArenaDelete(ArenaDelete event);
-    void onArenaCreate(ArenaCreate event);
-    void onTeamAddedToArena(TeamAddedToArena event);
-    void onTeamRemovedFromArena(TeamRemovedFromArena event);
+public interface TeamHandlerInterface {
     
-    void onLoad();
-    void start();
-    void end();
+    void onPlayerAddedToTeam(PlayerAddedToTeam event);
+    void onPlayerRemovedFromTeam(PlayerRemovedFromTeam event);
+    void onTeamCreate(TeamCreated event);
+    void onTeamRemove(TeamRemoved event);
+    
+    void create();
+    void delete();
 }

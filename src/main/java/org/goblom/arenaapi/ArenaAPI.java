@@ -32,7 +32,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 /**
+ * Arena Manager
  *
+ * Easily Create, Manager, Edit & Delete Arenas for any game that you have in
+ * mind. Arena Manager comes with Teams, Inventory saving/deleting/restoring and
+ * custom equipment for teams.
+ * 
+ * @TODO - JavaDocs
+ * 
+ * @version 1.0
  * @author Goblom
  */
 public class ArenaAPI extends JavaPlugin {
@@ -100,11 +108,11 @@ public class ArenaAPI extends JavaPlugin {
         return arenas.put(arenaName, new Arena(arenaName, minPlayers, maxPlayers, handler));
     }
 
-    public static Team createTeam(String teamName) {
-        return teams.put(teamName, new Team(teamName));
+    public static Team createTeam(String teamName, TeamHandler handler) {
+        return teams.put(teamName, new Team(teamName, handler));
     }
     
-    public static Team createTeam(String teamName, Arena arena, Location spawnLocation) {
-        return teams.put(teamName, new Team(teamName, arena, spawnLocation));
+    public static Team createTeam(String teamName, TeamHandler handler, Arena arena, Location spawnLocation) {
+        return teams.put(teamName, new Team(teamName, handler, arena, spawnLocation));
     }
 }
