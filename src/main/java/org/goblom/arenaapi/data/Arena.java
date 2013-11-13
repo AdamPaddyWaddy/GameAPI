@@ -41,6 +41,7 @@ import org.goblom.arenaapi.ArenaAPI;
 import org.goblom.arenaapi.ArenaHandler;
 import org.goblom.arenaapi.data.enums.ArenaPhase;
 import org.goblom.arenaapi.data.enums.LocationType;
+import org.goblom.arenaapi.events.EventCrafter;
 
 /**
  * 
@@ -68,9 +69,6 @@ public class Arena implements Listener {
     private int timer;
     private BukkitTask timerTask;
 
-    public Arena(String arenaName) {
-        this(arenaName, 1, 1, null);
-    }
 
     public Arena(String arenaName, int maxPlayers) {
         this(arenaName, 1, maxPlayers, null);
@@ -93,11 +91,12 @@ public class Arena implements Listener {
 
         this.handler = handler;
 
-        load();
+        create();
         ArenaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, ArenaAPI.getPlugin());
     }
 
     public void delete() {
+        EventCrafter.craftArenaDeleteEvent(this);
         HandlerList.unregisterAll(this);
         this.currentPhase = null;
         this.arenaName = null;
@@ -111,15 +110,27 @@ public class Arena implements Listener {
         this.timerTask = null;
     }
 
-    protected final void load() {
-        handler.onLoad();
+    public void create() {
+        EventCrafter.craftArenaCreateEvent(this);
+        this.currentPhase = ArenaPhase.CREATE;
+        handler.onCreate();
     }
-
+    
+    public void load() {
+       EventCrafter.craftArenaChangePhaseEvent(this, ArenaPhase.LOAD, currentPhase);
+       this.currentPhase = ArenaPhase.LOAD;
+       handler.onLoad();
+    }
+    
     public void start() {
+        EventCrafter.craftArenaChangePhaseEvent(this, ArenaPhase.GAME_START, currentPhase);
+        this.currentPhase = ArenaPhase.GAME_START;
         handler.start();
     }
 
     public void end() {
+        EventCrafter.craftArenaChangePhaseEvent(this, ArenaPhase.GAME_END, currentPhase);
+        this.currentPhase = ArenaPhase.GAME_START;
         handler.end();
     }
 
@@ -213,6 +224,7 @@ public class Arena implements Listener {
 
     public Arena addTeam(Team team) {
         if (!teams.contains(team)) {
+            EventCrafter.craftTeamAddedToArenaEvent(this, team);
             teams.add(team);
         }
         return this;
@@ -220,6 +232,7 @@ public class Arena implements Listener {
 
     public Arena remTeam(Team team) {
         if (teams.contains(team)) {
+            EventCrafter.craftTeamRemovedFromArenaEvent(this, team);
             teams.remove(team);
         }
         return this;

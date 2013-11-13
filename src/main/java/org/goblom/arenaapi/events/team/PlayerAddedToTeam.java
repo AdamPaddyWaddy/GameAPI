@@ -34,9 +34,9 @@ import org.goblom.arenaapi.data.Team;
 public class PlayerAddedToTeam {
 
     private static Team team;
-    private static Player player;
+    private static String player;
     
-    public PlayerAddedToTeam(Team team, Player player) {
+    public PlayerAddedToTeam(Team team, String player) {
         this.team = team;
         this.player = player;
     }
@@ -45,7 +45,7 @@ public class PlayerAddedToTeam {
         return team;
     }
     
-    public Player getPlayer() {
+    public String getPlayer() {
         return player;
     }
 }

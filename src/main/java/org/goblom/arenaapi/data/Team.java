@@ -28,7 +28,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.bukkit.Location;
+import org.bukkit.inventory.ItemStack;
 import org.goblom.arenaapi.TeamHandler;
+import org.goblom.arenaapi.events.EventCrafter;
 
 /**
  *
@@ -42,29 +44,33 @@ public class Team {
     private TeamHandler handler;
     
     private List<String> players = new ArrayList<String>();
-
-    private List<Arena> arenasForTeam = new ArrayList<Arena>();
+    private ItemStack[] teamArmor;
+    
     private Map<Arena, Location> arenaSpawn = new HashMap();
     
     public Team(String teamName, TeamHandler handler) {
-        this(teamName, handler, null, null);
-    }
-    
-    public Team(String teamName, TeamHandler handler, Arena arena, Location arenaSpawn) {
-        this.arenasForTeam.add(arena);
         this.teamName = teamName;
         this.handler = handler;
-        this.arenaSpawn.put(arena, arenaSpawn);
+        
+        create();
     }
 
     public void remove() {
+        EventCrafter.craftTeamRemovedEvent(this);
+        handler.delete();
+        
         this.handler = null;
         this.arenaSpawn = null;
         this.teamName = null;
-        this.arenasForTeam = null;
         this.players = null;
+        this.teamArmor = null;
     }
 
+    public void create() {
+        EventCrafter.craftTeamCreatedEvent(this);
+        handler.create();
+    }
+    
     public String getName() {
         return teamName;
     }
@@ -73,17 +79,16 @@ public class Team {
         return handler;
     }
     
-
+    public ItemStack[] getTeamArmor() {
+        return teamArmor;
+    }
+    
     public boolean getFriendlyFire() {
         return friendlyFire;
     }
 
     public List<String> getPlayers() {
         return players;
-    }
-
-    public List<Arena> getArenasForTeam() {
-        return arenasForTeam;
     }
 
     public Map<Arena, Location> getArenaSpawnsForTeam() {
@@ -93,7 +98,11 @@ public class Team {
     public Location getSpawnForArena(Arena arena) {
         return arenaSpawn.get(arena);
     }
-
+    
+    public void setTeamArmor(ItemStack[] armor) {
+        this.teamArmor = armor;
+    }
+    
     public void setFriendlyFire(boolean friendlyFire) {
         this.friendlyFire = friendlyFire;
     }
@@ -115,11 +124,15 @@ public class Team {
     }
 
     public void addPlayers(List<String> players) {
+        for (String playerName : players) {
+            EventCrafter.craftPlayerAddedToTeamEvent(this, playerName);
+        }
         this.players = players;
     }
 
     public boolean addPlayer(String playerName) {
         if (!players.contains(playerName)) {
+            EventCrafter.craftPlayerAddedToTeamEvent(this, playerName);
             players.add(playerName);
             return true;
         }
@@ -132,24 +145,8 @@ public class Team {
 
     public boolean remPlayer(String playerName) {
         if (players.contains(playerName)) {
+            EventCrafter.craftPlayerRemovedFromTeamEvent(this, playerName);
             players.remove(playerName);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean addArena(Arena arena) {
-        if (!arenasForTeam.contains(arena)) {
-            arenasForTeam.add(arena);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean remArena(Arena arena) {
-        if (arenasForTeam.contains(arena)) {
-            arenasForTeam.remove(arena);
             return true;
         }
         return false;

@@ -40,7 +40,6 @@ public abstract class ArenaHandler implements ArenaHandlerInterface, Listener {
         ArenaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, ArenaAPI.getPlugin());
     }
     
-    public abstract void onLoad();
     public abstract void start();
     public abstract void end();
 }

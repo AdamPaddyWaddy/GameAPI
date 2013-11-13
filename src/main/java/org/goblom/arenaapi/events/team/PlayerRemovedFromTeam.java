@@ -34,9 +34,9 @@ import org.goblom.arenaapi.data.Team;
 public class PlayerRemovedFromTeam {
 
     private static Team team;
-    private static Player player;
+    private static String player;
     
-    public PlayerRemovedFromTeam(Team team, Player player) {
+    public PlayerRemovedFromTeam(Team team, String player) {
         this.team = team;
         this.player = player;
     }
@@ -45,7 +45,7 @@ public class PlayerRemovedFromTeam {
         return team;
     }
     
-    public Player getPlayer() {
+    public String getPlayer() {
         return player;
     }
 }

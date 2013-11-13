@@ -27,7 +27,6 @@ import org.goblom.arenaapi.data.Team;
 import org.goblom.arenaapi.data.Arena;
 import java.util.HashMap;
 import java.util.Map;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -39,7 +38,7 @@ import org.bukkit.scheduler.BukkitTask;
  * custom equipment for teams.
  * 
  * @TODO - JavaDocs
- * @TODO - Implement Events
+ * @TODO - Implement Events (I think they are all done)
  * 
  * @version 1.0
  * @author Goblom
@@ -88,10 +87,6 @@ public class ArenaAPI extends JavaPlugin {
     public static Team getTeam(Team team) {
         return teams.get(team.getName());
     }
-    
-    public static Arena createArena(String arenaName) {
-        return arenas.put(arenaName, new Arena(arenaName));
-    }
 
     public static Arena createArena(String arenaName, int maxPlayers) {
         return arenas.put(arenaName, new Arena(arenaName, maxPlayers));
@@ -111,9 +106,5 @@ public class ArenaAPI extends JavaPlugin {
 
     public static Team createTeam(String teamName, TeamHandler handler) {
         return teams.put(teamName, new Team(teamName, handler));
-    }
-    
-    public static Team createTeam(String teamName, TeamHandler handler, Arena arena, Location spawnLocation) {
-        return teams.put(teamName, new Team(teamName, handler, arena, spawnLocation));
     }
 }

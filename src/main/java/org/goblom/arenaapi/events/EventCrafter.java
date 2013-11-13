@@ -24,7 +24,6 @@
 
 package org.goblom.arenaapi.events;
 
-import org.bukkit.entity.Player;
 import org.goblom.arenaapi.data.*;
 import org.goblom.arenaapi.data.enums.ArenaPhase;
 import org.goblom.arenaapi.events.arena.*;
@@ -61,13 +60,13 @@ public class EventCrafter {
         arena.getHandler().onTeamRemovedFromArena(trfa);
     }
     
-    public static void craftPlayerAddedToTeamEvent(Team team, Player player) {
-        PlayerAddedToTeam patt = new PlayerAddedToTeam(team, player);
+    public static void craftPlayerAddedToTeamEvent(Team team, String playerName) {
+        PlayerAddedToTeam patt = new PlayerAddedToTeam(team, playerName);
         team.getHandler().onPlayerAddedToTeam(patt);
     }
     
-    public static void craftPlayerRemovedFromTeamEvent(Team team, Player player) {
-        PlayerRemovedFromTeam prft = new PlayerRemovedFromTeam(team, player);
+    public static void craftPlayerRemovedFromTeamEvent(Team team, String playerName) {
+        PlayerRemovedFromTeam prft = new PlayerRemovedFromTeam(team, playerName);
         team.getHandler().onPlayerRemovedFromTeam(prft);
     }
     
