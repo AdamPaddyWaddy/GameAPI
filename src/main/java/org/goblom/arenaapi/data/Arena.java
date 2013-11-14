@@ -37,7 +37,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitTask;
-import org.goblom.arenaapi.ArenaAPI;
+import org.goblom.arenaapi.Main;
 import org.goblom.arenaapi.ArenaHandler;
 import org.goblom.arenaapi.data.enums.ArenaPhase;
 import org.goblom.arenaapi.data.enums.LocationType;
@@ -92,7 +92,7 @@ public class Arena implements Listener {
         this.handler = handler;
 
         create();
-        ArenaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, ArenaAPI.getPlugin());
+        Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
     }
 
     public void delete() {
@@ -261,14 +261,14 @@ public class Arena implements Listener {
         if (timerTask != null) {
             return false;
         } else if (timerTask == null) {
-            BukkitTask task = Bukkit.getScheduler().runTaskLater(ArenaAPI.getPlugin(), new Runnable() {
+            BukkitTask task = Bukkit.getScheduler().runTaskLater(Main.getPlugin(), new Runnable() {
                 public void run() {
                     handler.end(getThis());
                 }
             }, timer);
 
             if (task != null) {
-                ArenaAPI.getPlugin().getArenaTimers().put(this, task);
+                Main.getPlugin().getArenaTimers().put(this, task);
                 return true;
             }
         }
@@ -307,7 +307,7 @@ public class Arena implements Listener {
     }
 
     private final void preventItemLoss() {
-        Bukkit.getScheduler().runTaskTimer(ArenaAPI.getPlugin(), new Runnable() {
+        Bukkit.getScheduler().runTaskTimer(Main.getPlugin(), new Runnable() {
             public void run() {
                 for (Team team : teams) {
                     for (String playerName : team.getPlayers()) {

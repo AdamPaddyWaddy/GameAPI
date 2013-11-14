@@ -22,18 +22,20 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.arenaapi;
 
 import java.util.Map;
 import org.bukkit.scheduler.BukkitTask;
 import org.goblom.arenaapi.ArenaHandler;
 import org.goblom.arenaapi.TeamHandler;
+import org.goblom.arenaapi.data.Arena;
+import org.goblom.arenaapi.data.Team;
 
 /**
  *
  * @author Goblom
  */
-public interface ArenaAPIInterface {
+public interface CoreAPI {
     public Map<Arena, BukkitTask> getArenaTimers();
     
     public Map<String, Arena> getArenas();

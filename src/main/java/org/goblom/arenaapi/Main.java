@@ -29,7 +29,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
-import org.goblom.arenaapi.data.ArenaAPIInterface;
 
 /**
  * Arena Manager
@@ -44,9 +43,9 @@ import org.goblom.arenaapi.data.ArenaAPIInterface;
  * @version 1.0
  * @author Goblom
  */
-public class ArenaAPI extends JavaPlugin implements ArenaAPIInterface {
+public class Main extends JavaPlugin implements CoreAPI {
 
-    private static ArenaAPI plugin;
+    private static Main plugin;
 
     private static Map<String, Arena> arenas = new HashMap();
     private static Map<String, Team> teams = new HashMap();
@@ -57,7 +56,7 @@ public class ArenaAPI extends JavaPlugin implements ArenaAPIInterface {
         this.plugin = this;
     }
 
-    public static ArenaAPI getPlugin() {
+    public static Main getPlugin() {
         return plugin;
     }
 

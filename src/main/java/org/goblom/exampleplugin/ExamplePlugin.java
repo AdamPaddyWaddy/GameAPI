@@ -26,8 +26,7 @@ package org.goblom.exampleplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.goblom.arenaapi.ArenaAPI;
-import org.goblom.arenaapi.data.ArenaAPIInterface;
+import org.goblom.arenaapi.CoreAPI;
 
 /**
  *
@@ -35,16 +34,16 @@ import org.goblom.arenaapi.data.ArenaAPIInterface;
  */
 public class ExamplePlugin {
     
-    private ArenaAPIInterface arenaAPI;
+    private CoreAPI arenaAPI;
     
     public void onEnable() {
-        arenaAPI = (ArenaAPIInterface) Bukkit.getServer().getPluginManager().getPlugin("Arena API");
+        arenaAPI = (CoreAPI) Bukkit.getServer().getPluginManager().getPlugin("Arena API");
         initTeam();
         initArena();
         initTeamSpawn();
     }
     
-    public ArenaAPIInterface getArenaAPI() {
+    public CoreAPI getArenaAPI() {
         return arenaAPI;
     }
     

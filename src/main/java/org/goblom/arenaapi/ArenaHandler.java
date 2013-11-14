@@ -35,7 +35,7 @@ import org.goblom.arenaapi.data.ArenaHandlerInterface;
 public abstract class ArenaHandler implements ArenaHandlerInterface, Listener {
     
     public ArenaHandler() {
-        ArenaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, ArenaAPI.getPlugin());
+        Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
     }
     
     public abstract void start(Arena arena);
