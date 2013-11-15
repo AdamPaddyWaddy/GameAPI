@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.goblom.arenaapi;
+package org.goblom.gameapi;
 
-import org.goblom.arenaapi.data.Team;
-import org.goblom.arenaapi.data.Arena;
+import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.data.Arena;
 import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.plugin.java.JavaPlugin;

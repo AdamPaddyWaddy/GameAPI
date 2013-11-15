@@ -26,7 +26,7 @@ package org.goblom.exampleplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.goblom.arenaapi.CoreAPI;
+import org.goblom.gameapi.CoreAPI;
 
 /**
  *

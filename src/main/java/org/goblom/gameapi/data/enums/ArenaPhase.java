@@ -22,13 +22,15 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data.enums;
+package org.goblom.gameapi.data.enums;
 
 /**
  *
  * @author Goblom
  */
-public enum LocationType {
-    END,
-    OTHER
+public enum ArenaPhase {
+    CREATE,
+    LOAD,
+    GAME_START,
+    GAME_END
 }

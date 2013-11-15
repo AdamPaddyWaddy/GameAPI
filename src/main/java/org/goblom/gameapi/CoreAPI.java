@@ -22,22 +22,31 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi;
+package org.goblom.gameapi;
 
-import org.bukkit.event.Listener;
-import org.goblom.arenaapi.data.Arena;
-import org.goblom.arenaapi.data.ArenaHandlerInterface;
+import java.util.Map;
+import org.bukkit.scheduler.BukkitTask;
+import org.goblom.gameapi.ArenaHandler;
+import org.goblom.gameapi.TeamHandler;
+import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.data.Team;
 
 /**
  *
  * @author Goblom
  */
-public abstract class ArenaHandler implements ArenaHandlerInterface, Listener {
+public interface CoreAPI {
+    public Map<Arena, BukkitTask> getArenaTimers();
     
-    public ArenaHandler() {
-        Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
-    }
+    public Map<String, Arena> getArenas();
+    public Arena getArena(String arenaName);
+    public Arena createArena(String arenaName, int maxPlayers);
+    public Arena createArena(String arenaName, ArenaHandler handler);
+    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
+    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
     
-    public abstract void start(Arena arena);
-    public abstract void end(Arena arena);
+    
+    public Map<String, Team> getTeams();
+    public Team getTeam(String teamName);
+    public Team createTeam(String teamName, TeamHandler handler);
 }

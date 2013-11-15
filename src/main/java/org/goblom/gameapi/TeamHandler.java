@@ -22,22 +22,18 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events.arena;
+package org.goblom.gameapi;
 
-import org.goblom.arenaapi.data.Arena;
+import org.bukkit.event.Listener;
+import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.data.TeamHandlerInterface;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaDelete {
-    private static Arena arena;
+public abstract class TeamHandler implements TeamHandlerInterface, Listener {
     
-    public ArenaDelete(Arena arena) {
-        this.arena = arena;
-    }
-    
-    public Arena getArena() {
-        return arena;
-    }
+    public abstract void create(Team team);
+    public abstract void delete(Team team);
 }

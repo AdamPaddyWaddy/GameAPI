@@ -21,32 +21,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package org.goblom.gameapi.events.arena;
 
-package org.goblom.arenaapi;
-
-import java.util.Map;
-import org.bukkit.scheduler.BukkitTask;
-import org.goblom.arenaapi.ArenaHandler;
-import org.goblom.arenaapi.TeamHandler;
-import org.goblom.arenaapi.data.Arena;
-import org.goblom.arenaapi.data.Team;
+import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.data.enums.ArenaPhase;
 
 /**
  *
  * @author Goblom
  */
-public interface CoreAPI {
-    public Map<Arena, BukkitTask> getArenaTimers();
-    
-    public Map<String, Arena> getArenas();
-    public Arena getArena(String arenaName);
-    public Arena createArena(String arenaName, int maxPlayers);
-    public Arena createArena(String arenaName, ArenaHandler handler);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
-    
-    
-    public Map<String, Team> getTeams();
-    public Team getTeam(String teamName);
-    public Team createTeam(String teamName, TeamHandler handler);
+public class ArenaChangePhase {
+
+    private static Arena arena;
+    private static ArenaPhase currentPhase;
+    private static ArenaPhase previousPhase;
+
+    public ArenaChangePhase(Arena arena, ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
+        this.arena = arena;
+        this.currentPhase = changedToPhase;
+        this.previousPhase = changedFromPhase;
+    }
+
+    public Arena getArena() {
+        return arena;
+    }
+
+    public ArenaPhase getCurrentPhase() {
+        return currentPhase;
+    }
+
+    public ArenaPhase getPreviousPhase() {
+        return previousPhase;
+    }
 }

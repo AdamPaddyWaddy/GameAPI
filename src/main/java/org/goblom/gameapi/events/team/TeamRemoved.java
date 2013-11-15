@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events.team;
+package org.goblom.gameapi.events.team;
 
-import org.goblom.arenaapi.data.Team;
+import org.goblom.gameapi.data.Team;
 
 /**
  *

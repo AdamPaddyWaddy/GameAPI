@@ -22,30 +22,27 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events.team;
+package org.goblom.gameapi.data;
 
-import org.bukkit.entity.Player;
-import org.goblom.arenaapi.data.Team;
+import org.goblom.gameapi.events.arena.ArenaChangePhase;
+import org.goblom.gameapi.events.arena.TeamAddedToArena;
+import org.goblom.gameapi.events.arena.TeamRemovedFromArena;
+import org.goblom.gameapi.events.arena.ArenaCreate;
+import org.goblom.gameapi.events.arena.ArenaDelete;
 
 /**
  *
  * @author Goblom
  */
-public class PlayerRemovedFromTeam {
-
-    private static Team team;
-    private static String player;
+public interface ArenaHandlerInterface {
+    void onArenaPhaseChange(ArenaChangePhase event);
+    void onArenaDelete(ArenaDelete event);
+    void onArenaCreate(ArenaCreate event);
+    void onTeamAddedToArena(TeamAddedToArena event);
+    void onTeamRemovedFromArena(TeamRemovedFromArena event);
     
-    public PlayerRemovedFromTeam(Team team, String player) {
-        this.team = team;
-        this.player = player;
-    }
-    
-    public Team getTeam() {
-        return team;
-    }
-    
-    public String getPlayer() {
-        return player;
-    }
+    void onCreate(Arena arena);
+    void onLoad(Arena arena);
+    void start(Arena arena);
+    void end(Arena arena);
 }

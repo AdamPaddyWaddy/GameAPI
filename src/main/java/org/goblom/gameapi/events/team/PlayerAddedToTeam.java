@@ -22,15 +22,30 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data.enums;
+package org.goblom.gameapi.events.team;
+
+import org.bukkit.entity.Player;
+import org.goblom.gameapi.data.Team;
 
 /**
  *
  * @author Goblom
  */
-public enum ArenaPhase {
-    CREATE,
-    LOAD,
-    GAME_START,
-    GAME_END
+public class PlayerAddedToTeam {
+
+    private static Team team;
+    private static String player;
+    
+    public PlayerAddedToTeam(Team team, String player) {
+        this.team = team;
+        this.player = player;
+    }
+    
+    public Team getTeam() {
+        return team;
+    }
+    
+    public String getPlayer() {
+        return player;
+    }
 }

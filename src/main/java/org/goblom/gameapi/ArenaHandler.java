@@ -22,22 +22,22 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events.arena;
+package org.goblom.gameapi;
 
-import org.goblom.arenaapi.data.Arena;
+import org.bukkit.event.Listener;
+import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.data.ArenaHandlerInterface;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaCreate {
-    private static Arena arena;
+public abstract class ArenaHandler implements ArenaHandlerInterface, Listener {
     
-    public ArenaCreate(Arena arena) {
-        this.arena = arena;
+    public ArenaHandler() {
+        Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
     }
     
-    public Arena getArena() {
-        return arena;
-    }
+    public abstract void start(Arena arena);
+    public abstract void end(Arena arena);
 }

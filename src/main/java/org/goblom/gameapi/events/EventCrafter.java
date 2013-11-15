@@ -22,12 +22,20 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events;
+package org.goblom.gameapi.events;
 
-import org.goblom.arenaapi.data.*;
-import org.goblom.arenaapi.data.enums.ArenaPhase;
-import org.goblom.arenaapi.events.arena.*;
-import org.goblom.arenaapi.events.team.*;
+import org.goblom.gameapi.events.team.PlayerAddedToTeam;
+import org.goblom.gameapi.events.team.PlayerRemovedFromTeam;
+import org.goblom.gameapi.events.team.TeamCreated;
+import org.goblom.gameapi.events.team.TeamRemoved;
+import org.goblom.gameapi.events.arena.ArenaChangePhase;
+import org.goblom.gameapi.events.arena.TeamAddedToArena;
+import org.goblom.gameapi.events.arena.TeamRemovedFromArena;
+import org.goblom.gameapi.events.arena.ArenaCreate;
+import org.goblom.gameapi.events.arena.ArenaDelete;
+import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.data.enums.ArenaPhase;
 
 /**
  *

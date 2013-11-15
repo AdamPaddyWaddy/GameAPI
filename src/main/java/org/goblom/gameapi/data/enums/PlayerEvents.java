@@ -21,36 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.goblom.arenaapi.events.arena;
 
-import org.goblom.arenaapi.data.Arena;
-import org.goblom.arenaapi.data.enums.ArenaPhase;
+package org.goblom.gameapi.data.enums;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaChangePhase {
-
-    private static Arena arena;
-    private static ArenaPhase currentPhase;
-    private static ArenaPhase previousPhase;
-
-    public ArenaChangePhase(Arena arena, ArenaPhase changedToPhase, ArenaPhase changedFromPhase) {
-        this.arena = arena;
-        this.currentPhase = changedToPhase;
-        this.previousPhase = changedFromPhase;
-    }
-
-    public Arena getArena() {
-        return arena;
-    }
-
-    public ArenaPhase getCurrentPhase() {
-        return currentPhase;
-    }
-
-    public ArenaPhase getPreviousPhase() {
-        return previousPhase;
-    }
+public enum PlayerEvents {
+    ADDED,
+    REMOVED
 }

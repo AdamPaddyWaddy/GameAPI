@@ -22,13 +22,29 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data.enums;
+package org.goblom.gameapi.events.arena;
+
+import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.data.Team;
 
 /**
  *
  * @author Goblom
  */
-public enum PlayerEvents {
-    ADDED,
-    REMOVED
+public class TeamRemovedFromArena {
+    private static Arena arena;
+    private static Team team;
+    
+    public TeamRemovedFromArena(Arena arena, Team team) {
+        this.arena = arena;
+        this.team = team;
+    }
+    
+    public Arena getArena() {
+        return arena;
+    }
+    
+    public Team getTeam() {
+        return team;
+    }
 }

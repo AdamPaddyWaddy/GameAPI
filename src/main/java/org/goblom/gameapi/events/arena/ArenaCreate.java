@@ -22,21 +22,22 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.data;
+package org.goblom.gameapi.events.arena;
 
-import org.goblom.arenaapi.events.team.*;
+import org.goblom.gameapi.data.Arena;
 
 /**
  *
  * @author Goblom
  */
-public interface TeamHandlerInterface {
+public class ArenaCreate {
+    private static Arena arena;
     
-    void onPlayerAddedToTeam(PlayerAddedToTeam event);
-    void onPlayerRemovedFromTeam(PlayerRemovedFromTeam event);
-    void onTeamCreate(TeamCreated event);
-    void onTeamRemove(TeamRemoved event);
+    public ArenaCreate(Arena arena) {
+        this.arena = arena;
+    }
     
-    void create(Team team);
-    void delete(Team team);
+    public Arena getArena() {
+        return arena;
+    }
 }

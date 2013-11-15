@@ -24,12 +24,12 @@
 
 package org.goblom.exampleplugin;
 
-import org.goblom.arenaapi.TeamHandler;
-import org.goblom.arenaapi.data.Team;
-import org.goblom.arenaapi.events.team.PlayerAddedToTeam;
-import org.goblom.arenaapi.events.team.PlayerRemovedFromTeam;
-import org.goblom.arenaapi.events.team.TeamCreated;
-import org.goblom.arenaapi.events.team.TeamRemoved;
+import org.goblom.gameapi.TeamHandler;
+import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.events.team.PlayerAddedToTeam;
+import org.goblom.gameapi.events.team.PlayerRemovedFromTeam;
+import org.goblom.gameapi.events.team.TeamCreated;
+import org.goblom.gameapi.events.team.TeamRemoved;
 
 /**
  *

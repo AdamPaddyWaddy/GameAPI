@@ -22,30 +22,22 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events.team;
+package org.goblom.gameapi.events.team;
 
-import org.bukkit.entity.Player;
-import org.goblom.arenaapi.data.Team;
+import org.goblom.gameapi.data.Team;
 
 /**
  *
  * @author Goblom
  */
-public class PlayerAddedToTeam {
-
+public class TeamCreated {
     private static Team team;
-    private static String player;
     
-    public PlayerAddedToTeam(Team team, String player) {
+    public TeamCreated(Team team) {
         this.team = team;
-        this.player = player;
     }
     
     public Team getTeam() {
         return team;
-    }
-    
-    public String getPlayer() {
-        return player;
     }
 }

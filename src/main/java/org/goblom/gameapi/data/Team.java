@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.goblom.arenaapi.data;
+package org.goblom.gameapi.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,8 +29,8 @@ import java.util.List;
 import java.util.Map;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
-import org.goblom.arenaapi.TeamHandler;
-import org.goblom.arenaapi.events.EventCrafter;
+import org.goblom.gameapi.TeamHandler;
+import org.goblom.gameapi.events.EventCrafter;
 
 /**
  *

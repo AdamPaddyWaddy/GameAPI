@@ -26,15 +26,15 @@ package org.goblom.exampleplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.goblom.arenaapi.ArenaHandler;
-import org.goblom.arenaapi.data.Arena;
-import org.goblom.arenaapi.data.Team;
-import org.goblom.arenaapi.data.enums.LocationType;
-import org.goblom.arenaapi.events.arena.ArenaChangePhase;
-import org.goblom.arenaapi.events.arena.ArenaCreate;
-import org.goblom.arenaapi.events.arena.ArenaDelete;
-import org.goblom.arenaapi.events.arena.TeamAddedToArena;
-import org.goblom.arenaapi.events.arena.TeamRemovedFromArena;
+import org.goblom.gameapi.ArenaHandler;
+import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.data.enums.LocationType;
+import org.goblom.gameapi.events.arena.ArenaChangePhase;
+import org.goblom.gameapi.events.arena.ArenaCreate;
+import org.goblom.gameapi.events.arena.ArenaDelete;
+import org.goblom.gameapi.events.arena.TeamAddedToArena;
+import org.goblom.gameapi.events.arena.TeamRemovedFromArena;
 
 /**
  *

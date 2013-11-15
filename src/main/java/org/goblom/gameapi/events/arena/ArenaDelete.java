@@ -22,29 +22,22 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.arenaapi.events.arena;
+package org.goblom.gameapi.events.arena;
 
-import org.goblom.arenaapi.data.Arena;
-import org.goblom.arenaapi.data.Team;
+import org.goblom.gameapi.data.Arena;
 
 /**
  *
  * @author Goblom
  */
-public class TeamRemovedFromArena {
+public class ArenaDelete {
     private static Arena arena;
-    private static Team team;
     
-    public TeamRemovedFromArena(Arena arena, Team team) {
+    public ArenaDelete(Arena arena) {
         this.arena = arena;
-        this.team = team;
     }
     
     public Arena getArena() {
         return arena;
-    }
-    
-    public Team getTeam() {
-        return team;
     }
 }
