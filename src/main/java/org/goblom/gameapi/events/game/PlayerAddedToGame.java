@@ -25,12 +25,13 @@
 package org.goblom.gameapi.events.game;
 
 import org.goblom.gameapi.data.Game;
+import org.goblom.gameapi.events.GameEvent;
 
 /**
  *
  * @author Goblom
  */
-public class PlayerAddedToGame {
+public class PlayerAddedToGame extends GameEvent {
     private final Game game;
     private final String playerName;
     

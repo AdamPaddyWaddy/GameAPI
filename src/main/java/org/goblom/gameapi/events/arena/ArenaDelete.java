@@ -25,12 +25,13 @@
 package org.goblom.gameapi.events.arena;
 
 import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.events.ArenaEvent;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaDelete {
+public class ArenaDelete extends ArenaEvent {
     private final Arena arena;
     
     public ArenaDelete(Arena arena) {

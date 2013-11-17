@@ -25,12 +25,13 @@
 package org.goblom.gameapi.events.team;
 
 import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.events.TeamEvent;
 
 /**
  *
  * @author Goblom
  */
-public class TeamRemoved {
+public class TeamRemoved extends TeamEvent {
    private final Team team;
     
     public TeamRemoved(Team team) {

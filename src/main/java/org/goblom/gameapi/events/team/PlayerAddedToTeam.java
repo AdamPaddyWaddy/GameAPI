@@ -24,14 +24,14 @@
 
 package org.goblom.gameapi.events.team;
 
-import org.bukkit.entity.Player;
 import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.events.TeamEvent;
 
 /**
  *
  * @author Goblom
  */
-public class PlayerAddedToTeam {
+public class PlayerAddedToTeam extends TeamEvent {
 
     private final Team team;
     private final String player;

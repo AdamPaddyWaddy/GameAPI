@@ -25,12 +25,13 @@
 package org.goblom.gameapi.events.arena;
 
 import org.goblom.gameapi.data.Arena;
+import org.goblom.gameapi.events.ArenaEvent;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaCreate {
+public class ArenaCreate extends ArenaEvent {
     private final Arena arena;
     
     public ArenaCreate(Arena arena) {

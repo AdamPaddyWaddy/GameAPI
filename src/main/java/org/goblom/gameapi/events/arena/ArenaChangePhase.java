@@ -25,12 +25,13 @@ package org.goblom.gameapi.events.arena;
 
 import org.goblom.gameapi.data.Arena;
 import org.goblom.gameapi.data.enums.ArenaPhase;
+import org.goblom.gameapi.events.ArenaEvent;
 
 /**
  *
  * @author Goblom
  */
-public class ArenaChangePhase {
+public class ArenaChangePhase extends ArenaEvent {
 
     private final Arena arena;
     private final ArenaPhase currentPhase;

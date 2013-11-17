@@ -22,30 +22,24 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.gameapi.events.arena;
+package org.goblom.gameapi.events;
 
-import org.goblom.gameapi.data.Arena;
-import org.goblom.gameapi.data.Team;
-import org.goblom.gameapi.events.ArenaEvent;
+import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
 
 /**
  *
  * @author Goblom
  */
-public class TeamAddedToArena extends ArenaEvent {
-    private final Arena arena;
-    private final Team team;
+public abstract class GameEvent extends Event {
+    private static final HandlerList handlers = new HandlerList();
     
-    public TeamAddedToArena(Arena arena, Team team) {
-        this.arena = arena;
-        this.team = team;
+    @Override
+    public HandlerList getHandlers() {
+        return handlers;
     }
     
-    public Arena getArena() {
-        return arena;
-    }
-    
-    public Team getTeam() {
-        return team;
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 }
