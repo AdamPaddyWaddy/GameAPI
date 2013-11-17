@@ -28,8 +28,12 @@ package org.goblom.gameapi.data.enums;
  *
  * @author Goblom
  */
-public enum LocationType {
-    SPAWN,
-    END,
-    OTHER
+public class SignData {
+    
+    public static enum Line {
+        LINE_1, //0
+        LINE_2, //1
+        LINE_3, //2
+        LINE_4  //3
+    }
 }

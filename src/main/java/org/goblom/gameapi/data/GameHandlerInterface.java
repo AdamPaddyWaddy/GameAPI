@@ -24,6 +24,8 @@
 
 package org.goblom.gameapi.data;
 
+import org.goblom.gameapi.data.enums.SignData;
+
 
 /**
  *
@@ -39,4 +41,6 @@ public interface GameHandlerInterface {
     
     public boolean addPlayer(String playerName);
     public boolean remPlayer(String playerName);
+    
+    public void setSign(SignData.Line line, String data);
 }

@@ -25,10 +25,14 @@
 package org.goblom.gameapi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.bukkit.block.Sign;
 import org.bukkit.event.Listener;
 import org.goblom.gameapi.data.Game;
 import org.goblom.gameapi.data.GameHandlerInterface;
+import org.goblom.gameapi.data.enums.SignData;
 
 /**
  *
@@ -37,6 +41,7 @@ import org.goblom.gameapi.data.GameHandlerInterface;
 public abstract class GameHandler implements GameHandlerInterface, Listener {
     
     public List<String> players = new ArrayList<String>(); //Need a way to also account for what team they will be
+    public Map<SignData.Line, String> sign = new HashMap();
     
     public GameHandler() {
         Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
@@ -53,6 +58,10 @@ public abstract class GameHandler implements GameHandlerInterface, Listener {
     
     public boolean remPlayer(String playerName) {
         return players.remove(playerName);
+    }
+    
+    public void setSign(SignData.Line line, String data) {
+        sign.put(line, data);
     }
     
     public abstract void start(Game game);

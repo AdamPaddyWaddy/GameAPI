@@ -26,6 +26,7 @@ package org.goblom.gameapi.data;
 
 import java.util.List;
 import org.goblom.gameapi.GameHandler;
+import org.goblom.gameapi.data.enums.SignData;
 
 /**
  *
@@ -63,5 +64,19 @@ public class Game {
     
     public List<String> getPlayers() {
         return handler.players;
+    }
+    
+    public String[] getSign() {
+        String line1 = "";
+        String line2 = "";
+        String line3 = "";
+        String line4 = "";
+        
+        if (handler.sign.containsKey(SignData.Line.LINE_1)) line1 = handler.sign.get(SignData.Line.LINE_1);
+        if (handler.sign.containsKey(SignData.Line.LINE_2)) line2 = handler.sign.get(SignData.Line.LINE_2);
+        if (handler.sign.containsKey(SignData.Line.LINE_3)) line3 = handler.sign.get(SignData.Line.LINE_3);
+        if (handler.sign.containsKey(SignData.Line.LINE_4)) line4 = handler.sign.get(SignData.Line.LINE_4);
+        
+        return new String[] { line1, line2, line3, line4 };
     }
 }
