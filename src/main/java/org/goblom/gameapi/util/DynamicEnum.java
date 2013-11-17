@@ -14,6 +14,8 @@ import sun.reflect.ReflectionFactory;
 
 /**
  * http://niceideas.ch/roller2/badtrash/entry/java_create_enum_instances_dynamically
+ * 
+ * @deprecated WARNING: Not Tested
  */
 public class DynamicEnum {
 
@@ -127,22 +129,24 @@ public class DynamicEnum {
            throw new RuntimeException(e.getMessage(), e);
        }
    }
-
-   private static enum TestEnum {
-       a,
-       b,
-       c;
-   };
-
-   public static void main(String[] args) {
-
-       // Dynamically add 3 new enum instances d, e, f to TestEnum
-       addEnum(TestEnum.class, "d");
-       addEnum(TestEnum.class, "e");
-       addEnum(TestEnum.class, "f");
-
-       // Run a few tests just to show it works OK.
-       System.out.println(Arrays.deepToString(TestEnum.values()));
-       // Shows : [a, b, c, d, e, f]
-   }
+   
+   private static enum TestEnum { };
+//
+//   private static enum TestEnum {
+//       a,
+//       b,
+//       c;
+//   };
+//
+//   public static void main(String[] args) {
+//
+//       // Dynamically add 3 new enum instances d, e, f to TestEnum
+//       addEnum(TestEnum.class, "d");
+//       addEnum(TestEnum.class, "e");
+//       addEnum(TestEnum.class, "f");
+//
+//       // Run a few tests just to show it works OK.
+//       System.out.println(Arrays.deepToString(TestEnum.values()));
+//       // Shows : [a, b, c, d, e, f]
+//   }
 }
