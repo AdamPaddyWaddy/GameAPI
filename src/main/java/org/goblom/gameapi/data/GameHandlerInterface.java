@@ -33,14 +33,13 @@ import org.goblom.gameapi.data.enums.SignData;
  */
 public interface GameHandlerInterface {
     
+    public int autoStartCountdown();
     public int minPlayers();
     public int maxPlayers();
     
     public void start(Game game);
     public void end(Game game);
     
-    public boolean addPlayer(String playerName);
-    public boolean remPlayer(String playerName);
-    
     public void setSign(SignData.Line line, String data);
+    public String autoStartMessage();
 }

@@ -24,6 +24,7 @@
 
 package org.goblom.exampleplugin;
 
+import org.bukkit.ChatColor;
 import org.goblom.gameapi.GameHandler;
 import org.goblom.gameapi.data.Game;
 
@@ -52,5 +53,14 @@ public class ExampleGameHandler extends GameHandler {
     @Override
     public String[] setTeams() {
         return new String[] { "RED", "BLUE", "GREEN", "YELLOW" };
+    }
+
+    @Override
+    public int autoStartCountdown() {
+        return 30;
+    }
+
+    public String autoStartMessage() {
+        return ChatColor.DARK_AQUA + "[" + ChatColor.DARK_PURPLE + "GameAPI" + ChatColor.DARK_AQUA + "] " + ChatColor.GREEN + "Game starts in %time% seconds!";
     }
 }

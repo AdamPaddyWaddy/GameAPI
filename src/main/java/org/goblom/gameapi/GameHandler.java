@@ -40,7 +40,7 @@ import org.goblom.gameapi.data.enums.SignData;
  */
 public abstract class GameHandler implements GameHandlerInterface, Listener {
     
-    public List<String> players = new ArrayList<String>(); //Need a way to also account for what team they will be
+//    public List<String> players = new ArrayList<String>(); //Need a way to also account for what team they will be
     public Map<SignData.Line, String> sign = new HashMap();
     
     public GameHandler() {
@@ -49,16 +49,11 @@ public abstract class GameHandler implements GameHandlerInterface, Listener {
     
     public abstract int minPlayers();
     public abstract int maxPlayers();
+    public int autoStartCountdown() {
+        return 0;
+    }
     
     public abstract String[] setTeams();
-    
-    public boolean addPlayer(String playerName) {
-        return players.add(playerName);
-    }
-    
-    public boolean remPlayer(String playerName) {
-        return players.remove(playerName);
-    }
     
     public void setSign(SignData.Line line, String data) {
         sign.put(line, data);
@@ -66,4 +61,6 @@ public abstract class GameHandler implements GameHandlerInterface, Listener {
     
     public abstract void start(Game game);
     public abstract void end(Game game);
+    
+    public abstract String autoStartMessage();
 }

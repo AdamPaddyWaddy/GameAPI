@@ -24,8 +24,12 @@
 
 package org.goblom.gameapi.data;
 
+import java.util.ArrayList;
 import java.util.List;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.goblom.gameapi.GameHandler;
+import org.goblom.gameapi.Main;
 import org.goblom.gameapi.data.enums.SignData;
 
 /**
@@ -38,6 +42,10 @@ public class Game {
     private final GameHandler handler;
     private final String[] teams;
     private final boolean autoStart;
+    private final int autoCountdown;
+    
+    private final List<String> players = new ArrayList<String>();
+    private boolean hasStarted = false;
     
     public Game(String gameName, GameHandler handler, boolean autoStart) {
         this.gameName = gameName;
@@ -45,16 +53,50 @@ public class Game {
         this.teams = handler.setTeams();
         
         this.autoStart = autoStart;
+        this.autoCountdown = (handler.autoStartCountdown() * 20);
+    }
+    
+    public String getName() {
+        return gameName;
+    }
+    
+    public GameHandler getHandler() {
+        return handler;
+    }
+    
+    public int getCountdown(boolean inTicks) {
+        if (inTicks) return autoCountdown;
+        return (autoCountdown / 20);
     }
     
     public void start() {
-        //CraftEvent
-        handler.start(this);
+        if (!hasStarted) {
+            //CraftEvent
+            handler.start(this);
+            this.hasStarted = true;
+        }
+    }
+    
+    public void autoStart() {
+        String message = handler.autoStartMessage().replaceAll("%time%", "" + handler.autoStartCountdown());
+        for (String playerName : players) {
+            Player player = Bukkit.getPlayer(playerName);
+            if (player != null) {
+                player.sendMessage(message);
+            }
+        }
+        Bukkit.getScheduler().runTaskLater(Main.getPlugin(), new Runnable() {
+            public void run() {
+                if (!hasStarted) start();
+            }
+        }, autoCountdown);
     }
     
     public void end() {
-        //CraftEvent
-        handler.end(this);
+        if (hasStarted) {
+            //CraftEvent
+            handler.end(this);
+        }
     }
     
     public String[] getTeams() {
@@ -63,7 +105,24 @@ public class Game {
     }
     
     public List<String> getPlayers() {
-        return handler.players;
+        return players;
+    }
+    
+    public void addPlayer(String playerName) {
+        if (players.size() < handler.maxPlayers()) {
+            players.add(playerName);
+            if (players.size() == handler.minPlayers()) {
+                if (autoStart) autoStart();
+            }
+        } else if (players.size() == handler.maxPlayers()) {
+            start();
+        }
+    }
+    
+    public void remPlayer(String playerName) {
+        if (players.contains(playerName)) {
+            players.remove(playerName);
+        }
     }
     
     public String[] getSign() {
