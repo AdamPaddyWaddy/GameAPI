@@ -32,8 +32,8 @@ import org.goblom.gameapi.data.Team;
  * @author Goblom
  */
 public class TeamAddedToArena {
-    private static Arena arena;
-    private static Team team;
+    private final Arena arena;
+    private final Team team;
     
     public TeamAddedToArena(Arena arena, Team team) {
         this.arena = arena;

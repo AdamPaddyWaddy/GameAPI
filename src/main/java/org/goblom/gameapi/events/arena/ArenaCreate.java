@@ -31,7 +31,7 @@ import org.goblom.gameapi.data.Arena;
  * @author Goblom
  */
 public class ArenaCreate {
-    private static Arena arena;
+    private final Arena arena;
     
     public ArenaCreate(Arena arena) {
         this.arena = arena;

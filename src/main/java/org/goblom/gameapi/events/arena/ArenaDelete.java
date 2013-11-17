@@ -31,7 +31,7 @@ import org.goblom.gameapi.data.Arena;
  * @author Goblom
  */
 public class ArenaDelete {
-    private static Arena arena;
+    private final Arena arena;
     
     public ArenaDelete(Arena arena) {
         this.arena = arena;

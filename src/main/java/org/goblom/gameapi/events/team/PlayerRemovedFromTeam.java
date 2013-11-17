@@ -33,8 +33,8 @@ import org.goblom.gameapi.data.Team;
  */
 public class PlayerRemovedFromTeam {
 
-    private static Team team;
-    private static String player;
+    private final Team team;
+    private final String player;
     
     public PlayerRemovedFromTeam(Team team, String player) {
         this.team = team;

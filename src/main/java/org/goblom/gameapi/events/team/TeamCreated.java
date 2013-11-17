@@ -31,7 +31,7 @@ import org.goblom.gameapi.data.Team;
  * @author Goblom
  */
 public class TeamCreated {
-    private static Team team;
+    private final Team team;
     
     public TeamCreated(Team team) {
         this.team = team;

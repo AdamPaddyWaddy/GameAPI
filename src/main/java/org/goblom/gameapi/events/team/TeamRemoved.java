@@ -31,7 +31,7 @@ import org.goblom.gameapi.data.Team;
  * @author Goblom
  */
 public class TeamRemoved {
-   private static Team team;
+   private final Team team;
     
     public TeamRemoved(Team team) {
         this.team = team;
