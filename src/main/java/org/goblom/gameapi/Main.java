@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.goblom.gameapi.data.Game;
 
 /**
  * Arena Manager
@@ -47,6 +48,7 @@ public class Main extends JavaPlugin implements CoreAPI {
 
     private static Main plugin;
 
+    private static Map<String, Game> games = new HashMap();
     private static Map<String, Arena> arenas = new HashMap();
     private static Map<String, Team> teams = new HashMap();
 
@@ -66,6 +68,11 @@ public class Main extends JavaPlugin implements CoreAPI {
     }
 
     @Override
+    public Map<String, Game> getGames() {
+        return games;
+    }
+    
+    @Override
     public Map<String, Arena> getArenas() {
         return arenas;
     }
@@ -84,7 +91,17 @@ public class Main extends JavaPlugin implements CoreAPI {
     public Team getTeam(String teamName) {
         return teams.get(teamName);
     }
-
+    
+    @Override
+    public Game getGame(String gameName) {
+        return games.get(gameName);
+    }
+    
+    @Override
+    public Game createGame(String gameName, GameHandler handler, boolean autoStart) {
+        return games.put(gameName, new Game(gameName, handler, autoStart));
+    }
+    
     @Override
     public Arena createArena(String arenaName, int maxPlayers) {
         return arenas.put(arenaName, new Arena(arenaName, maxPlayers));

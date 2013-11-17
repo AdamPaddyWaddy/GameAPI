@@ -22,34 +22,46 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.gameapi;
+package org.goblom.gameapi.data;
 
-import java.util.Map;
-import org.bukkit.scheduler.BukkitTask;
-import org.goblom.gameapi.data.Arena;
-import org.goblom.gameapi.data.Game;
-import org.goblom.gameapi.data.Team;
+import java.util.List;
+import org.goblom.gameapi.GameHandler;
 
 /**
  *
  * @author Goblom
  */
-public interface CoreAPI {
-    public Map<Arena, BukkitTask> getArenaTimers();
+public class Game {
     
-    public Map<String, Game> getGames();
-    public Game getGame(String gameName);
-    public Game createGame(String gameName, GameHandler handler, boolean autoStart);
+    private final String gameName;
+    private final GameHandler handler;
+    private final String[] teams;
+    private final boolean autoStart;
     
-    public Map<String, Arena> getArenas();
-    public Arena getArena(String arenaName);
-    public Arena createArena(String arenaName, int maxPlayers);
-    public Arena createArena(String arenaName, ArenaHandler handler);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
+    public Game(String gameName, GameHandler handler, boolean autoStart) {
+        this.gameName = gameName;
+        this.handler = handler;
+        this.teams = handler.setTeams();
+        
+        this.autoStart = autoStart;
+    }
     
+    public void start() {
+        //CraftEvent
+        handler.start(this);
+    }
     
-    public Map<String, Team> getTeams();
-    public Team getTeam(String teamName);
-    public Team createTeam(String teamName, TeamHandler handler);
+    public void end() {
+        //CraftEvent
+        handler.end(this);
+    }
+    
+    public String[] getTeams() {
+//        this.teams = handler.setTeams(); //Old Method of getting teams. Might return in future.
+        return teams;
+    }
+    
+    public List<String> getPlayers() {
+        return handler.players;
+    }
 }

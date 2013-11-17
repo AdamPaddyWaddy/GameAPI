@@ -24,32 +24,37 @@
 
 package org.goblom.gameapi;
 
-import java.util.Map;
-import org.bukkit.scheduler.BukkitTask;
-import org.goblom.gameapi.data.Arena;
+import java.util.ArrayList;
+import java.util.List;
+import org.bukkit.event.Listener;
 import org.goblom.gameapi.data.Game;
-import org.goblom.gameapi.data.Team;
+import org.goblom.gameapi.data.GameHandlerInterface;
 
 /**
  *
  * @author Goblom
  */
-public interface CoreAPI {
-    public Map<Arena, BukkitTask> getArenaTimers();
+public abstract class GameHandler implements GameHandlerInterface, Listener {
     
-    public Map<String, Game> getGames();
-    public Game getGame(String gameName);
-    public Game createGame(String gameName, GameHandler handler, boolean autoStart);
+    public List<String> players = new ArrayList<String>(); //Need a way to also account for what team they will be
     
-    public Map<String, Arena> getArenas();
-    public Arena getArena(String arenaName);
-    public Arena createArena(String arenaName, int maxPlayers);
-    public Arena createArena(String arenaName, ArenaHandler handler);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
+    public GameHandler() {
+        Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
+    }
     
+    public abstract int minPlayers();
+    public abstract int maxPlayers();
     
-    public Map<String, Team> getTeams();
-    public Team getTeam(String teamName);
-    public Team createTeam(String teamName, TeamHandler handler);
+    public abstract String[] setTeams();
+    
+    public boolean addPlayer(String playerName) {
+        return players.add(playerName);
+    }
+    
+    public boolean remPlayer(String playerName) {
+        return players.remove(playerName);
+    }
+    
+    public abstract void start(Game game);
+    public abstract void end(Game game);
 }

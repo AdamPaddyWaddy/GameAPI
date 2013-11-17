@@ -22,34 +22,21 @@
  * THE SOFTWARE.
  */
 
-package org.goblom.gameapi;
+package org.goblom.gameapi.data;
 
-import java.util.Map;
-import org.bukkit.scheduler.BukkitTask;
-import org.goblom.gameapi.data.Arena;
-import org.goblom.gameapi.data.Game;
-import org.goblom.gameapi.data.Team;
 
 /**
  *
  * @author Goblom
  */
-public interface CoreAPI {
-    public Map<Arena, BukkitTask> getArenaTimers();
+public interface GameHandlerInterface {
     
-    public Map<String, Game> getGames();
-    public Game getGame(String gameName);
-    public Game createGame(String gameName, GameHandler handler, boolean autoStart);
+    public int minPlayers();
+    public int maxPlayers();
     
-    public Map<String, Arena> getArenas();
-    public Arena getArena(String arenaName);
-    public Arena createArena(String arenaName, int maxPlayers);
-    public Arena createArena(String arenaName, ArenaHandler handler);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers);
-    public Arena createArena(String arenaName, int minPlayers, int maxPlayers, ArenaHandler handler);
+    public void start(Game game);
+    public void end(Game game);
     
-    
-    public Map<String, Team> getTeams();
-    public Team getTeam(String teamName);
-    public Team createTeam(String teamName, TeamHandler handler);
+    public boolean addPlayer(String playerName);
+    public boolean remPlayer(String playerName);
 }
